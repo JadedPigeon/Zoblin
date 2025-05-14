@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from PIL import Image
 
 class MainMenu(ctk.CTkFrame):
     def __init__(self, parent, controller):
@@ -14,8 +15,13 @@ class MainMenu(ctk.CTkFrame):
         self.grid_rowconfigure(2, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
-        # Titale Frame
-        self.title_frame = ctk.CTkFrame(self)
+        # Background Image
+        goblins_image = ctk.CTkImage(Image.open("assets/scenery/goblins.png"), size=(800, 600))
+        self.goblins_label = ctk.CTkLabel(self, image=goblins_image, text="")
+        self.goblins_label.grid(row=0, column=0, rowspan=3, columnspan=1, sticky="nsew")
+
+        # Title Frame
+        self.title_frame = ctk.CTkFrame(self, fg_color="transparent")  # Transparent background
         self.title_frame.grid(row=0, column=0, padx=10, pady=20, sticky="n")
 
         # Title
@@ -27,7 +33,7 @@ class MainMenu(ctk.CTkFrame):
         self.subtitle_label.grid(row=1, column=0, padx=10, pady=10, sticky="n")
 
         # Button Frame
-        self.button_frame = ctk.CTkFrame(self)
+        self.button_frame = ctk.CTkFrame(self, fg_color="transparent")  # Transparent background
         self.button_frame.grid(row=1, column=0, pady=20, sticky="n")
 
         # Load Game Button
@@ -36,15 +42,15 @@ class MainMenu(ctk.CTkFrame):
 
         # New Game Button
         self.start_button = ctk.CTkButton(self.button_frame, text="New Game", command=self.start_game)
-        self.start_button.grid(row=2, column=0, padx=10, pady=20, sticky="n")
+        self.start_button.grid(row=1, column=0, padx=10, pady=20, sticky="n")
 
         # Options Button
         self.options_button = ctk.CTkButton(self.button_frame, text="Options", command=lambda: print("Options clicked"))
-        self.options_button.grid(row=3, column=0, padx=10, pady=20, sticky="n")
+        self.options_button.grid(row=2, column=0, padx=10, pady=20, sticky="n")
 
         # Exit Button
         self.exit_button = ctk.CTkButton(self.button_frame, text="Exit", command=self.controller.quit)
-        self.exit_button.grid(row=4, column=0, padx=10, pady=20, sticky="n")
+        self.exit_button.grid(row=3, column=0, padx=10, pady=20, sticky="n")
 
     def start_game(self):
         self.controller.show_frame("TownScreen")
