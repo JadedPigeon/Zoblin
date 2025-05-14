@@ -1,13 +1,14 @@
 import customtkinter as ctk
 from ui.main_menu import MainMenu
 from ui.battle_screen import BattleScreen
+from ui.town_screen import TownScreen 
 
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("Zoblin - A Fantasy themed turn-based RPG")
         self.geometry("800x600")
-        ctk.set_appearance_mode("dark")
+        ctk.set_default_color_theme("assets/themes/earth_tones.json")
 
         # Frame container (acts as a stack of frames)
         self.container = ctk.CTkFrame(self)
@@ -23,7 +24,8 @@ class App(ctk.CTk):
         # Frame classes mapped by name
         self.frame_classes = {
             "MainMenu": MainMenu,
-            "BattleScreen": BattleScreen
+            "BattleScreen": BattleScreen,
+            "TownScreen": TownScreen
         }
 
         # Initialize frames
@@ -33,7 +35,7 @@ class App(ctk.CTk):
             frame.grid(row=0, column=0, sticky="nsew")
 
         # Show the main menu first
-        self.show_frame("MainMenu")
+        self.show_frame("TownScreen")
 
     def show_frame(self, frame_name):
         """Switch to the specified frame by name."""

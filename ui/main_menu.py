@@ -49,4 +49,4 @@ class MainMenu(ctk.CTkFrame):
     def start_game(self):
         """Switch to the battle screen."""
         print("Transitioning to the battle screen...")
-        self.controller.show_frame("BattleScreen")
+        self.controller.show_frame("TownScreen")
