@@ -28,4 +28,4 @@ class BattleScreen(ctk.CTkFrame):
     def run_away(self):
         print("Player runs away!")
         # Switch back to the main menu
-        self.controller.show_frame(MainMenu)
+        self.controller.show_frame("MainMenu")

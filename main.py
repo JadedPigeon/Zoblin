@@ -5,12 +5,17 @@ from ui.battle_screen import BattleScreen
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("Fantasy Game")
+        self.title("Zoblin - A Fantasy themed turn-based RPG")
         self.geometry("800x600")
+        ctk.set_appearance_mode("dark")
 
         # Frame container (acts as a stack of frames)
         self.container = ctk.CTkFrame(self)
         self.container.pack(fill="both", expand=True)
+
+        # Configure rows and columns to expand
+        self.container.grid_rowconfigure(0, weight=1)
+        self.container.grid_columnconfigure(0, weight=1)
 
         # Dictionary to store frames
         self.frames = {}
