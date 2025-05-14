@@ -31,7 +31,7 @@ class MainMenu(ctk.CTkFrame):
         self.button_frame.grid(row=1, column=0, pady=20, sticky="n")
 
         # Load Game Button
-        self.load_button = ctk.CTkButton(self.button_frame, text="Load Game", command=lambda: print("Load Game clicked"), fg_color="darkblue")
+        self.load_button = ctk.CTkButton(self.button_frame, text="Load Game", command=lambda: print("Load Game clicked"))
         self.load_button.grid(row=0, column=0, padx=10, pady=20, sticky="n")
 
         # New Game Button
@@ -47,6 +47,4 @@ class MainMenu(ctk.CTkFrame):
         self.exit_button.grid(row=4, column=0, padx=10, pady=20, sticky="n")
 
     def start_game(self):
-        """Switch to the battle screen."""
-        print("Transitioning to the battle screen...")
         self.controller.show_frame("TownScreen")

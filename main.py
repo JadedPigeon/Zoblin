@@ -8,6 +8,7 @@ class App(ctk.CTk):
         super().__init__()
         self.title("Zoblin - A Fantasy themed turn-based RPG")
         self.geometry("800x600")
+        self.resizable(False, False)
         ctk.set_default_color_theme("assets/themes/earth_tones.json")
 
         # Frame container (acts as a stack of frames)
@@ -35,7 +36,7 @@ class App(ctk.CTk):
             frame.grid(row=0, column=0, sticky="nsew")
 
         # Show the main menu first
-        self.show_frame("TownScreen")
+        self.show_frame("MainMenu")
 
     def show_frame(self, frame_name):
         """Switch to the specified frame by name."""

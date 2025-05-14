@@ -7,11 +7,11 @@ class MessageBox(ctk.CTkFrame):
 
         # Configure this frame to fill the parent container
         self.grid(row=0, column=0, sticky="nsew")
+        self.grid_columnconfigure(0, weight=1)
 
         # Configure rows and columns to expand
-        self.grid_rowconfigure(0, weight=1)
-        self.grid_columnconfigure(0, weight=1)
-        self.configure(width=600, height=200)
+        self.configure(width=400, height=200)
+        self.grid_propagate(False)
 
         # Message Label
         self.message_history = ctk.CTkTextbox(self, corner_radius=0)
