@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from ui.main_menu import MainMenu
 from ui.battle_screen import BattleScreen
-from ui.town import TownScreen, TownKeepScreen, InnScreen
+from ui.town import TownScreen, TownKeepScreen, InnScreen, BlackSmithScreen, GeneralShopScreen, TempleScreen
 
 class App(ctk.CTk):
     def __init__(self):
@@ -28,7 +28,10 @@ class App(ctk.CTk):
             "BattleScreen": BattleScreen,
             "TownScreen": TownScreen,
             "TownKeepScreen": TownKeepScreen,
-            "InnScreen": InnScreen
+            "InnScreen": InnScreen,
+            "BlackSmithScreen": BlackSmithScreen,
+            "GeneralShopScreen": GeneralShopScreen,
+            "TempleScreen": TempleScreen
         }
 
         # Initialize frames
