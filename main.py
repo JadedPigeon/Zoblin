@@ -1,9 +1,7 @@
 import customtkinter as ctk
 from ui.main_menu import MainMenu
 from ui.battle_screen import BattleScreen
-from ui.town_screen import TownScreen 
-from ui.town_keep_screen import TownKeepScreen
-from ui.inn_screen import InnScreen
+from ui.town import TownScreen, TownKeepScreen, InnScreen
 
 class App(ctk.CTk):
     def __init__(self):
