@@ -2,6 +2,7 @@ import customtkinter as ctk
 from ui.main_menu import MainMenu
 from ui.battle_screen import BattleScreen
 from ui.town_screen import TownScreen 
+from ui.town_keep_screen import TownKeepScreen
 
 class App(ctk.CTk):
     def __init__(self):
@@ -26,7 +27,8 @@ class App(ctk.CTk):
         self.frame_classes = {
             "MainMenu": MainMenu,
             "BattleScreen": BattleScreen,
-            "TownScreen": TownScreen
+            "TownScreen": TownScreen,
+            "TownKeepScreen": TownKeepScreen
         }
 
         # Initialize frames

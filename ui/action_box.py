@@ -39,15 +39,17 @@ class ActionBox(ctk.CTkFrame):
         print("This feature is not implemented yet.")
 
     def locations_button(self):
-        self.button_0.configure(text="Town Keep", command=self.placeholder_command)
+        self.button_0.configure(text="Town Keep", command=lambda: self.go_to_location("TownKeepScreen"))
         self.button_1.configure(text="Inn", command=self.placeholder_command)
         self.button_2.configure(text="Blacksmith", command=self.placeholder_command)
         self.button_3.configure(text="General Shop", command=self.placeholder_command)
         self.button_4.configure(text="Temple", command=self.placeholder_command)
         self.button_5 = ctk.CTkButton(self, text="<-", command=self.reset_buttons)
         self.button_5.grid(row=0, column=1, padx=10, pady=5, sticky="nsew")
-        self.button_6 = ctk.CTkButton(self, text="Adventure", command=self.placeholder_command)
+        self.button_6 = ctk.CTkButton(self, text="Town", command=lambda: self.go_to_location("TownScreen"))
         self.button_6.grid(row=1, column=1, padx=10, pady=5, sticky="nsew")
+        self.button_7 = ctk.CTkButton(self, text="Adventure", command=self.placeholder_command)
+        self.button_7.grid(row=2, column=1, padx=10, pady=5, sticky="nsew")
  
     def reset_buttons(self):
         """Reset buttons to the original state."""
@@ -60,3 +62,6 @@ class ActionBox(ctk.CTkFrame):
         # Remove the back button
         self.button_5.destroy()
         self.button_6.destroy()
+
+    def go_to_location(self, location):
+        self.controller.show_frame(location)

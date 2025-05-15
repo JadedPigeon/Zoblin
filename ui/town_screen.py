@@ -28,12 +28,3 @@ class TownScreen(ctk.CTkFrame):
         # Action frame
         self.town_action_frame = ActionBox(self, controller, "town")
         self.town_action_frame.grid(row=1, column=1, sticky="nsew")
-
-    def open_shop(self):
-        print("Opening shop...")
-
-    def open_inn(self):
-        print("Opening inn...")
-
-    def exit_town(self):
-        print("Exiting town...")
