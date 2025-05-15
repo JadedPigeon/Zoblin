@@ -40,7 +40,7 @@ class ActionBox(ctk.CTkFrame):
 
     def locations_button(self):
         self.button_0.configure(text="Town Keep", command=lambda: self.go_to_location("TownKeepScreen"))
-        self.button_1.configure(text="Inn", command=self.placeholder_command)
+        self.button_1.configure(text="Inn", command=lambda: self.go_to_location("InnScreen"))
         self.button_2.configure(text="Blacksmith", command=self.placeholder_command)
         self.button_3.configure(text="General Shop", command=self.placeholder_command)
         self.button_4.configure(text="Temple", command=self.placeholder_command)

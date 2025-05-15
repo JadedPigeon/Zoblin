@@ -3,6 +3,7 @@ from ui.main_menu import MainMenu
 from ui.battle_screen import BattleScreen
 from ui.town_screen import TownScreen 
 from ui.town_keep_screen import TownKeepScreen
+from ui.inn_screen import InnScreen
 
 class App(ctk.CTk):
     def __init__(self):
@@ -28,7 +29,8 @@ class App(ctk.CTk):
             "MainMenu": MainMenu,
             "BattleScreen": BattleScreen,
             "TownScreen": TownScreen,
-            "TownKeepScreen": TownKeepScreen
+            "TownKeepScreen": TownKeepScreen,
+            "InnScreen": InnScreen
         }
 
         # Initialize frames
