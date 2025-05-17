@@ -14,7 +14,7 @@ class ActionBox(ctk.CTkFrame):
         self.grid_columnconfigure(0, weight=1)
 
         # Action Frame
-        self.action_frame = ctk.CTkFrame(self)
+        self.action_frame = ctk.CTkFrame(self, fg_color="transparent")
         self.action_frame.grid(row=0, column=0, sticky="nsew")
         self.action_frame.grid_propagate(False)
         self.action_frame.grid_columnconfigure(0, weight=1)
@@ -29,7 +29,7 @@ class ActionBox(ctk.CTkFrame):
             btn.grid(row=i, column=0, padx=10, pady=5, sticky="nsew")
 
         # Location Frame
-        self.location_frame = ctk.CTkFrame(self)
+        self.location_frame = ctk.CTkFrame(self, fg_color="transparent")
         self.location_buttons = [
             ctk.CTkButton(self.location_frame, text="Town Keep", command=lambda: self.go_to_location("TownKeepScreen")),
             ctk.CTkButton(self.location_frame, text="Inn", command=lambda: self.go_to_location("InnScreen")),
