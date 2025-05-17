@@ -1,7 +1,8 @@
 import customtkinter as ctk
 from ui.main_menu import MainMenu
 from ui.battle_screen import BattleScreen
-from ui.town import TownScreen, TownKeepScreen, InnScreen, BlackSmithScreen, GeneralShopScreen, TempleScreen, ActionBox
+from ui.town import TownScreen, TownKeepScreen, InnScreen, BlackSmithScreen, GeneralShopScreen, TempleScreen
+from ui.action_box import ActionBox
 
 class App(ctk.CTk):
     def __init__(self):
@@ -41,6 +42,10 @@ class App(ctk.CTk):
             frame.grid(row=0, column=0, sticky="nsew")
             frame.grid_remove()
 
+        # adding one persistent action box
+        self.action_box = ActionBox(self.container, self, "town")
+        self.action_box.grid_remove()  # Hide it initially
+
         # Show the main menu first
         self.show_frame("MainMenu")
 
@@ -50,6 +55,15 @@ class App(ctk.CTk):
             if name == frame_name:
                 frame.grid()
                 frame.tkraise()
+                # Only place ActionBox on town screens
+                if hasattr(frame, "place_action_box"):
+                    # Decide which state to use based on frame_name
+                    if frame_name == "TownScreen":
+                        frame.place_action_box("actions")
+                    else:
+                        frame.place_action_box("locations")
+                else:
+                    self.action_box.grid_remove()
             else:
                 frame.grid_remove()
 

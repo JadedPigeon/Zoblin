@@ -1,7 +1,7 @@
 import customtkinter as ctk
 
 class ActionBox(ctk.CTkFrame):
-    def __init__(self, parent, controller, zone):
+    def __init__(self, parent, controller, zone, state="actions"):
         super().__init__(parent)
         self.controller = controller
 
@@ -51,7 +51,9 @@ class ActionBox(ctk.CTkFrame):
         self.location_frame.grid_columnconfigure((0, 1), weight=1)
 
         # Show only the action frame at start
-        self.show_actions()
+        if state == "locations":
+            self.show_locations()
+        else: self.show_actions()
 
     def show_actions(self):
         self.location_frame.grid_remove()
@@ -66,5 +68,6 @@ class ActionBox(ctk.CTkFrame):
 
     def go_to_location(self, location):
         self.controller.show_frame(location)
-        self.show_actions()
+        
+
         
