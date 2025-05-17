@@ -18,9 +18,6 @@ class MessageBox(ctk.CTkFrame):
         self.message_history.grid(row=0, column=0, sticky="nesw")
         self.message_history.configure(state="disabled")
 
-        # Default message
-        self.add_message("Welcome to Zoblin! A Fantasy themed turn-based RPG")
-
     def add_message(self, message):
         """Add a message to the message history."""
         self.message_history.configure(state="normal")

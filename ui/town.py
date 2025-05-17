@@ -95,7 +95,7 @@ class BlackSmithScreen(ctk.CTkFrame):
         # Message frrame
         self.message_box = MessageBox(self, controller)
         self.message_box.grid(row=1, column=0, sticky="nsew")
-        self.message_box.add_message("Welcome to the blacksmith! Here you can relax and rest")
+        self.message_box.add_message("Welcome to the blacksmith! Here you can buy and sell weapons and armor")
 
         # Action frame
         self.town_action_frame = ActionBox(self, controller, "town")
@@ -119,7 +119,7 @@ class GeneralShopScreen(ctk.CTkFrame):
         # Message frrame
         self.message_box = MessageBox(self, controller)
         self.message_box.grid(row=1, column=0, sticky="nsew")
-        self.message_box.add_message("Welcome to the generalshop! Here you can relax and rest")
+        self.message_box.add_message("Welcome to the generalshop! Here you can buy and sell items")
 
         # Action frame
         self.town_action_frame = ActionBox(self, controller, "town")
@@ -143,7 +143,7 @@ class TempleScreen(ctk.CTkFrame):
         # Message frrame
         self.message_box = MessageBox(self, controller)
         self.message_box.grid(row=1, column=0, sticky="nsew")
-        self.message_box.add_message("Welcome to the temple! Here you can relax and rest")
+        self.message_box.add_message("Welcome to the temple! Here you can upgrade your character!")
 
         # Action frame
         self.town_action_frame = ActionBox(self, controller, "town")

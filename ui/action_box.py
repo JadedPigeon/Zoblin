@@ -62,6 +62,8 @@ class ActionBox(ctk.CTkFrame):
         # Remove the back button
         self.button_5.destroy()
         self.button_6.destroy()
+        self.button_7.destroy()
 
     def go_to_location(self, location):
         self.controller.show_frame(location)
+        print(f"Going to {location}")
