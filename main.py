@@ -39,14 +39,19 @@ class App(ctk.CTk):
             frame = FrameClass(self.container, self)
             self.frames[name] = frame
             frame.grid(row=0, column=0, sticky="nsew")
+            frame.grid_remove()
 
         # Show the main menu first
         self.show_frame("MainMenu")
 
     def show_frame(self, frame_name):
         """Switch to the specified frame by name."""
-        frame = self.frames[frame_name]
-        frame.tkraise()
+        for name, frame in self.frames.items():
+            if name == frame_name:
+                frame.grid()
+                frame.tkraise()
+            else:
+                frame.grid_remove()
 
 if __name__ == "__main__":
     app = App()
