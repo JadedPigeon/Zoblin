@@ -54,4 +54,4 @@ class MainMenu(ctk.CTkFrame):
         self.exit_button.grid(row=3, column=0, padx=10, pady=10, sticky="n")
 
     def start_game(self):
-        self.controller.show_frame("TownScreen")
+        self.controller.show_frame("CharacterCreationScreen")

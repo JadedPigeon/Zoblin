@@ -2,6 +2,7 @@ import customtkinter as ctk
 from ui.main_menu import MainMenu
 from ui.battle_screen import BattleScreen
 from ui.town import TownScreen, TownKeepScreen, InnScreen, BlackSmithScreen, GeneralShopScreen, TempleScreen, TownBaseScreen
+from ui.character_creation import CharacterCreationScreen
 from ui.action_box import ActionBox
 from ui.message_box import MessageBox
 
@@ -35,7 +36,8 @@ class App(ctk.CTk):
             "InnScreen": InnScreen,
             "BlackSmithScreen": BlackSmithScreen,
             "GeneralShopScreen": GeneralShopScreen,
-            "TempleScreen": TempleScreen
+            "TempleScreen": TempleScreen,
+            "CharacterCreationScreen": CharacterCreationScreen
         }
 
         # Initialize frames
