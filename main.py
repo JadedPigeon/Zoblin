@@ -81,6 +81,8 @@ class App(ctk.CTk):
                     else:
                         self.place_action_box("locations")
                     self.place_message_box()
+                    self.message_box.clear_history()
+                    frame.welcome_message()
                 else:
                     self.action_box.grid_remove()
                     self.message_box.grid_remove()

@@ -13,7 +13,7 @@ class MessageBox(ctk.CTkFrame):
         self.grid_propagate(False)
 
         # Message Label
-        self.message_history = ctk.CTkTextbox(self, corner_radius=0)
+        self.message_history = ctk.CTkTextbox(self, corner_radius=0, wrap="word")
         self.message_history.grid(row=0, column=0, sticky="nesw")
         self.message_history.configure(state="disabled")
 
@@ -21,4 +21,9 @@ class MessageBox(ctk.CTkFrame):
         """Add a message to the message history."""
         self.message_history.configure(state="normal")
         self.message_history.insert("end", message + "\n")
+        self.message_history.configure(state="disabled")
+
+    def clear_history(self):
+        self.message_history.configure(state="normal")
+        self.message_history.delete("1.0", "end")
         self.message_history.configure(state="disabled")
