@@ -6,7 +6,6 @@ class ActionBox(ctk.CTkFrame):
         self.controller = controller
 
         self.configure(width=200, height=200)
-        self.grid(row=0, column=0, sticky="nsew")
         self.grid_propagate(False)
 
         # Make the single row and column expandable

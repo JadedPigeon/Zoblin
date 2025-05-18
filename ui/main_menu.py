@@ -55,4 +55,3 @@ class MainMenu(ctk.CTkFrame):
 
     def start_game(self):
         self.controller.show_frame("TownScreen")
-        self.controller.frames["TownScreen"].message_box.add_message("Welcome to Zoblin! A Fantasy themed turn-based RPG")

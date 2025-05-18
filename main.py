@@ -1,8 +1,9 @@
 import customtkinter as ctk
 from ui.main_menu import MainMenu
 from ui.battle_screen import BattleScreen
-from ui.town import TownScreen, TownKeepScreen, InnScreen, BlackSmithScreen, GeneralShopScreen, TempleScreen
+from ui.town import TownScreen, TownKeepScreen, InnScreen, BlackSmithScreen, GeneralShopScreen, TempleScreen, TownBaseScreen
 from ui.action_box import ActionBox
+from ui.message_box import MessageBox
 
 class App(ctk.CTk):
     def __init__(self):
@@ -12,11 +13,13 @@ class App(ctk.CTk):
         self.resizable(False, False)
         ctk.set_default_color_theme("assets/themes/earth_tones.json")
 
-        # Frame container (acts as a stack of frames)
-        self.container = ctk.CTkFrame(self)
-        self.container.pack(fill="both", expand=True)
+        # In App.__init__ (main.py)
+        self.geometry("800x600")
+        self.resizable(False, False)
 
-        # Configure rows and columns to expand
+        self.container = ctk.CTkFrame(self, width=800, height=600)
+        self.container.pack_propagate(False)
+        self.container.pack(fill="both", expand=False)
         self.container.grid_rowconfigure(0, weight=1)
         self.container.grid_columnconfigure(0, weight=1)
 
@@ -42,28 +45,45 @@ class App(ctk.CTk):
             frame.grid(row=0, column=0, sticky="nsew")
             frame.grid_remove()
 
-        # adding one persistent action box
-        self.action_box = ActionBox(self.container, self, "town")
-        self.action_box.grid_remove()  # Hide it initially
+        # Message and action boxes
+        self.message_box = MessageBox(self.container, self)
+        self.message_box.configure(width=550, height=200)
+        self.action_box = ActionBox(self.container, self, "town")       
+        self.action_box.configure(width=250, height=200)
 
         # Show the main menu first
         self.show_frame("MainMenu")
 
+    def place_message_box(self):
+        self.message_box.grid(row=1, column=0)
+        self.message_box.grid_propagate(False)
+
+    def place_action_box(self, state):
+        self.action_box.grid(row=1, column=1)
+        self.action_box.grid_propagate(False)
+        if state == "actions":
+            self.action_box.show_actions()
+        elif state == "locations":
+            self.action_box.show_locations()
+
     def show_frame(self, frame_name):
-        """Switch to the specified frame by name."""
         for name, frame in self.frames.items():
             if name == frame_name:
-                frame.grid()
+                if isinstance(frame, TownBaseScreen):
+                    frame.grid(row=0, column=0, columnspan=2)
+                else:
+                    frame.grid()
                 frame.tkraise()
-                # Only place ActionBox on town screens
-                if hasattr(frame, "place_action_box"):
-                    # Decide which state to use based on frame_name
+                # Only place ActionBox and MessageBox on town screens
+                if isinstance(frame, TownBaseScreen):
                     if frame_name == "TownScreen":
-                        frame.place_action_box("actions")
+                        self.place_action_box("actions")
                     else:
-                        frame.place_action_box("locations")
+                        self.place_action_box("locations")
+                    self.place_message_box()
                 else:
                     self.action_box.grid_remove()
+                    self.message_box.grid_remove()
             else:
                 frame.grid_remove()
 

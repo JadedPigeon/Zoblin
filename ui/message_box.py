@@ -6,7 +6,6 @@ class MessageBox(ctk.CTkFrame):
         self.controller = controller
 
         # Configure this frame to fill the parent container
-        self.grid(row=0, column=0, sticky="nsew")
         self.grid_columnconfigure(0, weight=1)
 
         # Configure rows and columns to expand
